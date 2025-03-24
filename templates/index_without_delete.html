@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Welcome, {{ username }}!</h1>
+    <a href="{{ url_for('logout') }}" class="button">Logout</a>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <h2>Add a Transaction</h2>
+    <form method="POST" action="{{ url_for('index') }}">
+        <label for="time">Date (UK format):</label><br>
+        <input type="date" id="time" name="time" required><br><br>
+
+        <label for="amount">Amount (GBP):</label><br>
+        <input type="number" id="amount" name="amount" step="0.01" required><br><br>
+
+        <label for="transaction_type">Transaction Type:</label><br>
+        <select id="transaction_type" name="transaction_type" required>
+            <option value="">--Select--</option>
+            <option value="Leisure">Leisure</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Tax">Tax</option>
+            <option value="Rent">Rent</option>
+        </select><br><br>
+
+        <button type="submit" class="button">Add Transaction</button>
+    </form>
+
+    <hr>
+    <h2>Transactions</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>UUID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Transaction Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row['UUID'] }}</td>
+                    <td>{{ row['Time'] }}</td>
+                    <td>{{ row['Amount'] }}</td>
+                    <td>{{ row['Transaction Type'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
