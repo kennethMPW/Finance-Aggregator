@@ -137,7 +137,7 @@ def login():
     return render_template('login.html')
 
 
-# @app.route('/home', methods=['GET', 'POST'])
+# @app.route('/home)
 # def home():
 #     if 'user' not in session:
 #         flash('You need to log in first!', 'error')
@@ -171,11 +171,13 @@ def add_entry():
 
 # Route for data summary/graphs
 # Summary / Graphs route (stub for future)
+
+# TO DO Add this in the future
 @app.route('/summary')
 def summary():
     if 'user' in session:
         # Placeholder for summary page
-        return "<h2>Summary & Graphs Page (Coming soon)</h2>"
+        return "<h2>Summary & Graphs Page</h2>"
     else:
         flash('You need to log in first!', 'error')
         return redirect(url_for('login'))
