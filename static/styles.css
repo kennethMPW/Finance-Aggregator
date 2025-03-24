@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    padding: 40px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.button {
+    display: inline-block;
+    background: #FF7BFF;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+.flash-messages {
+    list-style: none;
+    padding: 0;
+}
+
+.flash-messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.flash-messages .success { background: #d4edda; color: #155724; }
+.flash-messages .error   { background: #f8d7da; color: #721c24; }
+.flash-messages .info    { background: #d1ecf1; color: #0c5460; }
